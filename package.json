@@ -1,0 +1,51 @@
+{
+    "name": "@zepto-labs/delta-cli",
+    "version": "1.0.0",
+    "description": "CLI to manage Delta releases",
+    "license": "MIT",
+    "main": "dist/bin/index.js",
+    "type": "commonjs",
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/zepto-labs/delta-cli.git",
+    "author": "Zepto <opensource@zepto.com> (https://github.com/zepto-labs)",
+    "scripts": {
+        "build-cli": "npx tsc",
+        "watch-cli": "watch 'yarn run build-cli' . --interval=10",
+        "release": "yarn build-cli && npm publish"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "prettier --write"
+        ]
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
+    "bin": {
+        "delta-cli": "./dist/bin/index.js"
+    },
+    "dependencies": {
+        "@aws-sdk/client-lambda": "3.967.0",
+        "@aws-sdk/client-s3": "3.967.0",
+        "@types/adm-zip": "^0.5.5",
+        "@types/node": "^20.12.7",
+        "adm-zip": "^0.5.12",
+        "bsdiff-node": "^2.5.0",
+        "chalk": "^4.1.2",
+        "dotenv": "16.4.5"
+    },
+    "devDependencies": {
+        "lint-staged": "15.2.2",
+        "prettier": "3.2.5",
+        "typescript": "5.2.2"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "resolutions": {
+        "fast-xml-parser": "^5.7.0"
+    }
+}
